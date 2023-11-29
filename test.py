@@ -33,4 +33,3 @@ with open(res_path, 'w') as f:
 # tf_mask = np.zeros(n_genes, dtype=bool)
 # tf_mask[tf_idx] = True
 # res = graph_theoretic_evaluation(tmp_filepath, G_target, G_pred, tf_mask=tf_mask)
-
