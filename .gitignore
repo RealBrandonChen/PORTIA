@@ -3,6 +3,10 @@
 out.txt
 
 data/
+sorted_data/
+sorted_data_5/
+sorted_data_40/
+sorted_data_100/
 
 .idea/
 venv/
