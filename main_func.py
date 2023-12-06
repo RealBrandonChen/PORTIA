@@ -7,7 +7,7 @@ from evalTools import *
 parent_dir = "E:\\Courses\\Repo\PORTIA\\"
 data_num = [100, 40, 5]
 data_name = ["{}_mr_50_cond\simulated_noNoise.txt".format(data_num[0]), "{}_mr_50_cond\simulated_noNoise.txt".format(data_num[1]), "{}_mr_50_cond\simulated_noNoise.txt".format(data_num[2])]
-parent_dir = "E:\\Courses\\Repo\PORTIA\\sorted_data\\"
+# parent_dir = "E:\\Courses\\Repo\PORTIA\\sorted_data\\"
 
 
 for i in range(len(data_num)):
@@ -33,7 +33,7 @@ for i in range(len(data_num)):
     method = ['fast', 'end-to-end', 'no-transform']       
     for method in method:
         M_bar, S = pt.run(dataset, tf_idx=tf_idx, method=method, return_sign=True)
-        res_path = os.path.join(parent_dir, "sorted_data/results_{}.txt".format(method)) 
+        res_path = os.path.join(parent_dir, "Raw_results/results_{0}_{1}.txt".format(method, data_num[i])) 
         gene_names = np.arange(200)
         with open(res_path, 'w') as f:
             for gene_a, gene_b, score in pt.rank_scores(M_bar, gene_names, limit=10000):
