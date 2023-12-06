@@ -7,6 +7,7 @@ import seaborn as sns
 import networkx as nx
 from sklearn.metrics import precision_recall_curve, auc
 import os
+from sklearn import metrics
 
 
 '''
@@ -81,7 +82,6 @@ if __name__ == '__main__':
 
         # 过滤目标基因标识符小于100的行, 因为得到的ranking.txt数据里面有一些 error
         valid_ranking_df = ranking_df[ranking_df['Target'] >= 100]
-
         # 初始化预测分数数组，大小与 true_labels 相同
         predicted_scores_reordered = np.zeros(true_labels_5.shape)
 
@@ -92,18 +92,81 @@ if __name__ == '__main__':
             score = row['Score']
             predicted_scores_reordered[tf_idx, target_idx] = score
 
-        # # 展平数组以计算 总体的 AUROC
+        ## 展平数组以计算 总体的 AUROC
         true_labels_flattened = true_labels_5.flatten()
         predicted_scores_flattened = predicted_scores_reordered.flatten()
 
         # 计算 Precision 和 Recall (计算不同threshold下的 precision 和 recall)
         precision, recall, _ = precision_recall_curve(true_labels_flattened, predicted_scores_flattened)
         
-        auprc = auc(recall, precision)
-        auc = roc_auc_score(true_labels_flattened, predicted_scores_flattened)
-        df_5.loc[len(df_5.index)] = [f, auprc, auc]
+        auprc = metrics.auc(recall, precision)
+        auroc = roc_auc_score(true_labels_flattened, predicted_scores_flattened)
+        df_5.loc[len(df_5.index)] = [f, auprc, auroc]
         df_5.to_csv("sorted_data_5/AUPRC_AUROC_5.csv", index=False)
-    
+
+    df_40 = pd.DataFrame(columns = ['File','AUPRC', 'AUROC'])
+    for f in os.listdir("sorted_data_40"): 
+
+        # valid_ranking_df = pd.read_csv("100_mr_sort_result.csv")
+        # 读取未排序的result
+        predicted_file = os.path.join('sorted_data_40',f)  # 替换为预测结果文件路径
+        ranking_df = pd.read_csv(predicted_file)
+
+        # 过滤目标基因标识符小于100的行, 因为得到的ranking.txt数据里面有一些 error
+        valid_ranking_df = ranking_df[ranking_df['Target'] >= 100]
+        # 初始化预测分数数组，大小与 true_labels 相同
+        predicted_scores_reordered = np.zeros(true_labels_40.shape)
+
+        # 填充重排序的预测分数
+        for _, row in valid_ranking_df.iterrows():
+            tf_idx = int(row['TF'])  # 确保 tf_idx 是整数
+            target_idx = int(row['Target'] - 100)  # 确保 target_idx 是整数
+            score = row['Score']
+            predicted_scores_reordered[tf_idx, target_idx] = score
+
+        ## 展平数组以计算 总体的 AUROC
+        true_labels_flattened = true_labels_40.flatten()
+        predicted_scores_flattened = predicted_scores_reordered.flatten()
+
+        # 计算 Precision 和 Recall (计算不同threshold下的 precision 和 recall)
+        precision, recall, _ = precision_recall_curve(true_labels_flattened, predicted_scores_flattened)
+        
+        auprc = metrics.auc(recall, precision)
+        auroc = roc_auc_score(true_labels_flattened, predicted_scores_flattened)
+        df_40.loc[len(df_40.index)] = [f, auprc, auroc]
+        df_40.to_csv("sorted_data_40/AUPRC_AUROC_40.csv", index=False)
+        
+    df_100 = pd.DataFrame(columns = ['File','AUPRC', 'AUROC'])
+    for f in os.listdir("sorted_data_100"): 
+
+        # valid_ranking_df = pd.read_csv("100_mr_sort_result.csv")
+        # 读取未排序的result
+        predicted_file = os.path.join('sorted_data_100',f)  # 替换为预测结果文件路径
+        ranking_df = pd.read_csv(predicted_file)
+
+        # 过滤目标基因标识符小于100的行, 因为得到的ranking.txt数据里面有一些 error
+        valid_ranking_df = ranking_df[ranking_df['Target'] >= 100]
+        # 初始化预测分数数组，大小与 true_labels 相同
+        predicted_scores_reordered = np.zeros(true_labels_100.shape)
+
+        # 填充重排序的预测分数
+        for _, row in valid_ranking_df.iterrows():
+            tf_idx = int(row['TF'])  # 确保 tf_idx 是整数
+            target_idx = int(row['Target'] - 100)  # 确保 target_idx 是整数
+            score = row['Score']
+            predicted_scores_reordered[tf_idx, target_idx] = score
+
+        ## 展平数组以计算 总体的 AUROC
+        true_labels_flattened = true_labels_100.flatten()
+        predicted_scores_flattened = predicted_scores_reordered.flatten()
+
+        # 计算 Precision 和 Recall (计算不同threshold下的 precision 和 recall)
+        precision, recall, _ = precision_recall_curve(true_labels_flattened, predicted_scores_flattened)
+        
+        auprc = metrics.auc(recall, precision)
+        auroc = roc_auc_score(true_labels_flattened, predicted_scores_flattened)
+        df_100.loc[len(df_100.index)] = [f, auprc, auroc]
+        df_100.to_csv("sorted_data_100/AUPRC_AUROC_100.csv", index=False)
     # ####################################################################################################################
     # # Get AUROC
     # # 存储每个基因的AUROC

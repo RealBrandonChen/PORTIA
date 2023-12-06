@@ -1,0 +1,13 @@
+File,AUPRC,AUROC
+40_mr_result_sorted_top_100_method_end-to-end.csv,0.5337632584471833,0.5841049493335794
+40_mr_result_sorted_top_100_method_fast.csv,0.5287673789673543,0.583075954855971
+40_mr_result_sorted_top_100_method_no-transform.csv,0.5292696427924561,0.5830790714470186
+40_mr_result_sorted_top_200_method_end-to-end.csv,0.552406138160046,0.6507022406835224
+40_mr_result_sorted_top_200_method_fast.csv,0.5521865622151003,0.6506993318652112
+40_mr_result_sorted_top_200_method_no-transform.csv,0.543380648889968,0.6466305183659672
+40_mr_result_sorted_top_300_method_end-to-end.csv,0.5437226954246019,0.6908656456298848
+40_mr_result_sorted_top_300_method_fast.csv,0.5435324974697124,0.6908629445843102
+40_mr_result_sorted_top_300_method_no-transform.csv,0.5412640165567008,0.6888544055403847
+40_mr_result_sorted_top_400_method_end-to-end.csv,0.5288656748727127,0.7138716974263815
+40_mr_result_sorted_top_400_method_fast.csv,0.5310829076926142,0.7158631991059123
+40_mr_result_sorted_top_400_method_no-transform.csv,0.5307841092871576,0.7148713959481406
