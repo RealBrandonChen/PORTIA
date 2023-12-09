@@ -8,6 +8,7 @@ parent_dir = "E:\\Courses\\Repo\PORTIA\\"
 data_num = [100, 40, 5]
 data_name = ["{}_mr_50_cond\simulated_noNoise.txt".format(data_num[0]), "{}_mr_50_cond\simulated_noNoise.txt".format(data_num[1]), "{}_mr_50_cond\simulated_noNoise.txt".format(data_num[2])]
 # parent_dir = "E:\\Courses\\Repo\PORTIA\\sorted_data\\"
+top_n = [487, 507, 490]
 
 
 for i in range(len(data_num)):
@@ -40,6 +41,5 @@ for i in range(len(data_num)):
                 f.write(f'{gene_a}\t{gene_b}\t{score}\n')
             
         # Call sorting function
-        top_n = [100, 200, 300 ,400]
-        for top_n in top_n:
-            sortResults(res_path, method=method, top_n=top_n, testSetNum=data_num[i])
+        # 100_mr = 487 paris, 40_mr = 507, 5_mr = 490
+        sortResults(res_path, method=method, top_n=top_n[i], testSetNum=data_num[i])
