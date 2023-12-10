@@ -4,7 +4,8 @@ import matplotlib as plt
 import os
 from evalTools import *
 
-parent_dir = "E:\\Courses\\Repo\PORTIA\\"
+# parent_dir = "E:\\Courses\\Repo\PORTIA\\"
+parent_dir = "G:\\GeorgiaTech\\Local_repo\\BioML\PORTIA\\"
 data_num = [100, 40, 5]
 data_name = ["{}_mr_50_cond\simulated_noNoise.txt".format(data_num[0]), "{}_mr_50_cond\simulated_noNoise.txt".format(data_num[1]), "{}_mr_50_cond\simulated_noNoise.txt".format(data_num[2])]
 # parent_dir = "E:\\Courses\\Repo\PORTIA\\sorted_data\\"

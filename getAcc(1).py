@@ -37,7 +37,7 @@ for f in os.listdir("sorted_data_5"):
     predicted_file = os.path.join('sorted_data_5',f)  # 替换为预测结果文件路径
     accuracy, precision, recall, f1_score = calculate_accuracy(predicted_file, true_file=true_file_5)
     df_5.loc[len(df_5.index)] = [f, accuracy, precision, recall, f1_score] 
-    df_5.to_csv("sorted_data_5/Accuracy_5.csv", index=False)
+    df_5.to_csv("Accuracy/Accuracy_5.csv", index=False)
     
 df_40 = pd.DataFrame(columns = ['File','Accuracy', 'Precision','Recall','F1 Score'])
 # 调用函数计算准确率
@@ -45,7 +45,7 @@ for f in os.listdir("sorted_data_40"):
     predicted_file = os.path.join('sorted_data_40',f)  # 替换为预测结果文件路径
     accuracy, precision, recall, f1_score = calculate_accuracy(predicted_file, true_file=true_file_40)
     df_40.loc[len(df_40.index)] = [f, accuracy, precision, recall, f1_score] 
-    df_40.to_csv("sorted_data_40/Accuracy_40.csv", index=False)
+    df_40.to_csv("Accuracy/Accuracy_40.csv", index=False)
     
 df_100 = pd.DataFrame(columns = ['File','Accuracy', 'Precision','Recall','F1 Score'])
 # 调用函数计算准确率
@@ -53,4 +53,4 @@ for f in os.listdir("sorted_data_100"):
     predicted_file = os.path.join('sorted_data_100',f)  # 替换为预测结果文件路径
     accuracy, precision, recall, f1_score = calculate_accuracy(predicted_file, true_file=true_file_100)
     df_100.loc[len(df_100.index)] = [f, accuracy, precision, recall, f1_score] 
-    df_100.to_csv("sorted_data_100/Accuracy_100.csv", index=False)
+    df_100.to_csv("Accuracy/Accuracy_100.csv", index=False)
